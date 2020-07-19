@@ -19,16 +19,16 @@ let arr2 = Object.entries(obj2); // Возвращает массив пар к�
 
 allArrays.push(arr1, arr2); // Добавляем массивы
 
-allArrays = allArrays.flat(); // Массивы подняты на один уровень
-
-// console.log('Look at allArrays' + allArrays); // Выводит в консоль
+console.log('Look at allArrays' + allArrays); // Выводит в консоль
 
 for (let i=0; i<allArrays.length; i++) { // Цикл перебора массива
     // console.log(allArrays[i]); // Вывод в консоль перебра массива
     for (let j=0; j<allArrays[i].length; j++) {
         // console.log(allArrays[i][j]) // Значения
-        if ( typeof allArrays[i][j] === 'number') {
-            count += allArrays[i][j]; // Сумируем только числовые значения
+        for (let x=0; x<allArrays[i][j].length; x++) {
+            if ( typeof allArrays[i][j][x] === 'number') {
+                count += allArrays[i][j][x]; // Сумируем только числовые значения
+            }
         }
     }
 }
