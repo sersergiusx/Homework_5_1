@@ -2,35 +2,33 @@
 let obj1 = { // Создаем 1 обьект
     a: 1,
     b: 2,
-    c: 'd'
+    c: 'd',
+    l: [2, 3]
 }
 
 let obj2 = { // Создаем 2 обьект
     z: 5,
     y: 6,
-    x: 'y'
+    x: 'y',
+    m: [1, 2]
 }
 
 let count = 0;
-let allArrays = []; // Создаем пустой массив
 
-let arr1 = Object.entries(obj1); // Возвращает массив пар ключ: значение
-let arr2 = Object.entries(obj2); // Возвращает массив пар ключ: значение
+obj1 = Object.values(obj1); // Возвращает массив пар ключ: значение
+obj2 = Object.values(obj2); // Возвращает массив пар ключ: значение
 
-allArrays.push(arr1, arr2); // Добавляем массивы
+obj1 = obj1.flat(); // Выводим на один уровень
+obj2 = obj2.flat(); // Выводим на один уровень
 
-console.log('Look at allArrays' + allArrays); // Выводит в консоль
+let allArrays = obj1.concat(obj2); // Делаем конкатенацию
+
+console.log('Look at allArrays ' + allArrays); // Выводит в консоль
 
 for (let i=0; i<allArrays.length; i++) { // Цикл перебора массива
-    // console.log(allArrays[i]); // Вывод в консоль перебра массива
-    for (let j=0; j<allArrays[i].length; j++) {
-        // console.log(allArrays[i][j]) // Значения
-        for (let x=0; x<allArrays[i][j].length; x++) {
-            if ( typeof allArrays[i][j][x] === 'number') {
-                count += allArrays[i][j][x]; // Сумируем только числовые значения
-            }
-        }
+    if ( typeof allArrays[i] === 'number') {
+        count += allArrays[i]; // Сумируем только числовые значения
     }
 }
 
-alert('count: ' + count); // Выводим результат в системное окно
+console.log('count: ' + count); // Выводим результат в системное окно
